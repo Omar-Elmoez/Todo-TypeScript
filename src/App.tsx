@@ -9,10 +9,14 @@ function App() {
     setTasks((prevTasks) => [...prevTasks, new Todo(text)]);
   }
 
+  const removeTodoHandler = (id: number) => {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+  }
+
   return (
     <>
       <NewTodo onAddTodo={addTodoHandler} />
-      <Todos items={tasks} />
+      <Todos items={tasks} onRemoveTodo={removeTodoHandler} />
     </>
   );
 }

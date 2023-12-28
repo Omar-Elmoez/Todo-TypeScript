@@ -6,4 +6,7 @@
   color: black;
   font-weight: bold;
   text-transform: capitalize;
+  display: flex;
+  justify-content: space-between;
+  align-self: center;
 }

@@ -1,6 +1,6 @@
 import { useRef } from "react";
-
-const NewTodo = () => {
+import classes from "./NewTodo.module.css";
+const NewTodo: React.FC<{ onAddTodo: (text: string) => void}> = (props) => {
   const textInputRef = useRef<HTMLInputElement>(null);
   // React.MouseEvent is when use set onClick
   const submitHandler = (e: React.FormEvent) => {
@@ -15,11 +15,16 @@ const NewTodo = () => {
     if (enteredText.trim().length === 0) {
       return;
     }
+
+    props.onAddTodo(enteredText);
+
+    textInputRef.current!.value = "";
+
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <label htmlFor="todo-text">Todo text</label>
+    <form onSubmit={submitHandler} className={classes.form}>
+      <label htmlFor="todo-text">I am going to ...</label>
       <input type="text" id="todo-text" ref={textInputRef} />
       <button>Add Todo</button>
     </form>

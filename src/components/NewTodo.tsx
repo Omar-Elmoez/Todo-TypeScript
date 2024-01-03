@@ -1,10 +1,11 @@
-import { useContext, useRef } from "react";
+import { ElementRef, useContext, useRef } from "react";
 import classes from "./NewTodo.module.css";
 import { TodosContext } from "../store/todos-context";
 const NewTodo: React.FC = () => {
 
   const {addTodo} = useContext(TodosContext);
-  const textInputRef = useRef<HTMLInputElement>(null);
+  // const textInputRef = useRef<HTMLInputElement>(null);
+  const textInputRef = useRef<ElementRef<'input'>>(null);
   // React.MouseEvent is when use set onClick
   const submitHandler = (e: React.FormEvent) => {
     e.preventDefault();
